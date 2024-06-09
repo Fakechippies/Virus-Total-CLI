@@ -54,7 +54,6 @@ type AnalysisData struct {
 func TxtfileMaker() {
 	// opening json file
 	loadCounter()
-	counter++
 	filename := fmt.Sprintf("Report-%d.json", counter)
 	jsonFile, err := os.Open(filename)
 	if err != nil {
@@ -69,7 +68,8 @@ func TxtfileMaker() {
 	}
 
 	//creating a txt file
-	file, err := os.Create("malware1.txt")
+	Txtfile := fmt.Sprintf("Report-%d.txt", counter)
+	file, err := os.Create(Txtfile)
 	if err != nil {
 		log.Fatalf("Failed to create file: %s", err)
 	}
@@ -111,7 +111,7 @@ func TxtfileMaker() {
 
 	_, err = file.WriteString("\n")
 
-	err1 := os.Remove("malware1.json")
+	err1 := os.Remove(filename)
 	if err1 != nil {
 		fmt.Println("Error Deleting file")
 	}
