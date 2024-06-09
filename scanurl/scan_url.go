@@ -10,6 +10,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/Fakechippies/Virus-Total-API/txtfilemaker"
 	"github.com/joho/godotenv"
 )
 
@@ -99,7 +100,7 @@ func ScanURL(urlToScan string) {
 	loadCounter()
 
 	counter++
-	filename := fmt.Sprintf("UrlOutput:%d.json", counter)
+	filename := fmt.Sprintf("Report-%d.json", counter)
 	information := string(prettyJSON)
 	err = writeToFile(filename, information)
 	if err != nil {
@@ -110,6 +111,7 @@ func ScanURL(urlToScan string) {
 	fmt.Printf("Scan results saved to %s\n", filename)
 
 	saveCounter()
+	txtfilemaker.TxtfileMaker()
 }
 
 // Counter defination

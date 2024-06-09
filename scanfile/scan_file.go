@@ -11,6 +11,7 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/Fakechippies/Virus-Total-API/txtfilemaker"
 	"github.com/joho/godotenv"
 )
 
@@ -122,7 +123,7 @@ func Scanfile(filePath string) {
 			loadCounter()
 
 			counter++
-			filename := fmt.Sprintf("malware%d.json", counter)
+			filename := fmt.Sprintf("Report-%d.json", counter)
 			information := string(prettyJSON)
 			err = writeToFile(filename, information)
 			if err != nil {
@@ -133,6 +134,7 @@ func Scanfile(filePath string) {
 			fmt.Printf("Scan results saved to %s\n", filename)
 
 			saveCounter()
+			txtfilemaker.TxtfileMaker()
 			break
 		}
 
