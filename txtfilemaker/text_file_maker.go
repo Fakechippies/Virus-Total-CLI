@@ -51,6 +51,7 @@ type AnalysisData struct {
 	} `json:"meta"`
 }
 
+
 func TxtfileMaker() {
 	// opening json file
 	loadCounter()
